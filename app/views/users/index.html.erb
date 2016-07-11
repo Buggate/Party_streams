@@ -1,0 +1,37 @@
+<p class="notice"><%= notice %></p>
+
+
+   <h2>Authorized Users</h2>
+
+
+    <div class="panel panel-default">
+       <div class="panel-body">
+       <table class="table table-striped">
+    <head>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Status</th>
+
+        </tr>
+
+         </thead>
+         <tbody>
+           <% @current_user.each do |user| %>
+
+      <tr>
+        <td>user.name</td>
+        <th>user.email</th>
+        <td></td>
+
+        </tr>
+        <% end %>
+
+     </tbody>
+    </table>
+  </div>
+ </div>
+</div>
+
+
+

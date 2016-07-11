@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= content_for?(:party_streams) ? yield(:party_streams) : "Party Streams" %></title>
+
+   
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag    'application', 'http://fonts.googleapis.com/css?family=Raleway:400,700' %>
+    <%= stylesheet_link_tag    'application', "http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" %>
+    <%= csrf_meta_tags %>
+
+
+    <script>
+			  $(document).ready(function() {
+			    $('video').mediaelementplayer({
+			      alwaysShowControls: false,
+			      videoVolume: 'horizontal',
+			      features: ['playpause','progress','volume','fullscreen']
+			    });
+			  });
+  	  </script>
+
+  </head>
+      
+
+  <body>
+
+  <div class="top-bar">
+     <div class="fixed">
+     <% if user_signed_in? %>
+       <div class="top-bar-title">
+             <h1><%= link_to "Party Streams", bookings_path %><a/></h1>      
+          </div>
+          <% else %>
+             <h1><%= link_to "Party Streams", new_user_session_path %><a/></h1>
+          <% end %>
+           <% if user_signed_in? %>
+          <div class="top-bar-right">
+           <section class="top-bar-section">
+             <div class="row align-stretch">  
+                   <ul class="menu">
+                     <button class="button"><%= link_to "Sample Live Video" %></button> 
+                      <button class="button"><%= link_to "Sample Ondemand Video" %></button>
+                      <button class="button"><%= link_to "Sample Music Video" %></button>                    
+                   </ul> 
+              </div>
+           </section>      
+           </div> 
+           <% else %>
+           <div class="top-bar-right">
+           <section class="top-bar-section">
+             <div class="row align-stretch">  
+                   <ul class="menu">
+                    <button class="button"><%= link_to 'Sign up', new_user_registration_path %></button>
+                    <button class="button"><%= link_to 'Sign in', new_user_session_path %></button>
+                  </ul> 
+              </div>
+           </section>      
+           </div> 
+           <% end %>
+
+  </div>
+   </div><br>
+
+    <div class="row">
+       <div class="small-12 large-4 columns">
+          <div class="flex-video">
+             <iframe src="https://embed-ssl.ted.com/talks/matt_ridley_when_ideas_have_sex.html" width="640" height="360" frameborder="0" scrolling="no" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+          </div>
+          </div>
+
+         <div class="small-12 large-4 columns">
+          <div class="flex-video">
+             <iframe src="//www.youtube.com/embed/KrpFUCH-YZo" width="640" height="360"  frameborder="0" scrolling="no" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+         </div>
+         </div>
+ 
+        <div class="small-12 large-4 columns">
+
+       <div >
+        <video controls="" oncontextmenu="return false;" title="test..... Epe Class 2002 Reunion - 2016" width="700"><source src="http://live.partystream.co.uk:1935/joel/glamparty/playlist.m3u8?DVR" type="video/mp4" /></video>
+        </div>
+          
+    </div>
+    </div>
+    </div><br>
+
+
+        <div class="orbit" role="region" aria-label="Party Streams Info" data-orbit>
+  <ul class="orbit-container">
+    <button class="orbit-previous" aria-label="previous"><span class="show-for-sr">Previous Slide</span>&#9664;</button>
+    <button class="orbit-next" aria-label="next"><span class="show-for-sr">Next Slide</span>&#9654;</button>
+    <li class="is-active orbit-slide">
+      <div>
+        <h3 class="text-center">This is it!!!</h3>
+        <p class="text-center">Now you are able to share your happy moments with your Family and Loved ones</p>
+        <h3 class="text-center">All you have to do is send a single URL link to them and Voala! they can share in your jouyous mood in real time.</h3>
+      </div>
+    </li>
+    <li class="orbit-slide">
+      <div>
+        <h3 class="text-center">Post your IVs</h3>
+        <p class="text-center">Your invited guest can RSVP into the part link before hand and you can teke that away for proper planning for your party</p>
+        <h3 class="text-center">I think its great, dont you agree!</h3>
+      </div>
+    </li>
+    <li class="orbit-slide">
+      <div>
+        <h3 class="text-center">Allow you guest to put comment as they come in to view their inviations.</h3>
+        <p class="text-center">WE can quickly discuss about out Aso Ebis and so on, as quickly and effecttive as possible</p>
+        <h3 class="text-center">Join me in welcoming Party_Streams</h3>
+      </div>
+    </li>
+    <li class="orbit-slide">
+      <div>
+        <h3 class="text-center">The Most important things, is that Party_Streams is for you!</h3>
+        <p class="text-center">Very affordable, and easy to use. Book a service today and you will not regret it!</p>
+        <h3 class="text-center">The world is getting closer and small by the day</h3>
+      </div>
+    </li>
+  </ul>
+  <nav class="orbit-bullets">
+   <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
+   <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
+   <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
+   <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
+ </nav>
+</div>
+   
+
+    <div class="row">
+       <div class="large-4 columns"><h1 class="name">Basic</h1>
+
+				<p class="price"><strong class="number">£199.99</strong>*</p>
+
+				<div class="block">
+					<p>Post IV</p>
+				</div>
+				
+				<div class="block">
+					<p>free RSVP</p>
+					<p>Host Arrange video coverage<br />Technical Support free</p>
+				</div>
+		
+				<ul class="block check">
+					<li>Video URL</li>
+					<li>Enjoy!</li>
+				</ul>
+		
+								
+				<div class="signup Party_stream">
+					<p class="system">Party Stream</p>
+					<a class="button-blue" href="#" >Book</a>
+				</div>
+		</div>
+       <div class="large-4 columns"><h1 class="name">Standard</h1>
+				
+				<p class="price"><strong class="number">£299.99</strong>*</p>
+				
+				<div class="block">
+					<p>Post IV</p>
+				</div>
+				
+				<div class="block">
+					<p>free RSVP</p>
+					<p>Free Video Coverage<br />Technical Support free</p>
+				</div>
+
+				<ul class="block check">
+					<li>Video URL</li>
+					<li>Enjoy!</li>
+				</ul>
+				
+			
+			<div class="signup Party_stream">
+					<p class="system">Party Stream</p>
+					<a class="button-blue" href="#" >Book</a>
+				</div>
+		</div>
+       <div class="large-4 columns"><h1 class="name">Premium</h1>
+				
+				<p class="price"><strong class="number">£499.99</strong>*</p>
+				
+				<div class="block">
+					<p>Post IV</p>
+				</div>
+				
+				<div class="block">
+					<p>RSVP</p>
+					<p>On Demand Stream<br />Free Video Coverage<br />Technical Support free</p>
+				</div>
+
+				<ul class="block check">
+					<li>Video URL</li>
+					<li>Enjoy!</li>
+				</ul>
+				
+			
+			<div class="signup Party_stream">
+					<p class="system">Party Stream</p>
+					<a class="button-blue" href="#" >Book</a>
+				</div>
+			</div>
+</div>
+       <%= yield %></div>
+
+		
+<!-- Footer -->
+
+<footer class="footer">
+
+  <div class="row full-width">
+
+    <div class="small-12 medium-3 large-4 columns">
+
+      <i class="fi-laptop"></i>
+
+      <p>Log in to use Party Streams Services on all available media devices, Ur Laptops, Mobiles, etc</p>
+
+    </div>
+
+    <div class="small-12 medium-3 large-4 columns">
+
+      <i class="fi-address-book"></i>
+
+      <p>123, Adeniji Adele, Basepoint Business Centre, Luton LU2 7EX<br /> Tel: 0234152662727<br /> Email: testingemail@email.com</p>
+
+    </div>
+
+    <div class="small-6 medium-3 large-2 columns">
+
+      <h4>Work With Us</h4>
+
+      <ul class="footer-links">
+
+        <li><a href="#">What I Do</a></li>
+
+        <li><a href="#">Pricing</a></li>
+
+        <li><a href="#">Events</a></li>
+
+        <li><a href="#">Blog</a></li>
+
+        <li><a href="#">FAQ's</a></li>
+
+      <ul>
+
+    </div>
+
+    <div class="small-6 medium-3 large-2 columns">
+
+      <h4>Follow Us</h4>
+
+      <ul class="footer-links">
+
+        <li><a href="#">GitHub</a></li>
+
+        <li><a href="#">Facebook</a></li>
+
+        <li><a href="#">Twitter</a></li>
+
+        <li><a href="#">Instagram</a></li>
+
+        <li><a href="#">Dribbble</a></li>
+
+      <ul>
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+
+
+
+
+         
+  </body>
+</html>

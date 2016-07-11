@@ -1,0 +1,67 @@
+<p id="notice"><%= notice %></p>
+
+<div >
+      <%= image_tag @booking.image.url{:medium}, class: "booking_image" %>
+ </div>
+
+<p>
+  <strong>Party: </strong>
+  <%= @booking.title %>
+</p>
+
+<p>
+  <strong>Host: </strong>
+  <%= @booking.hostname %>
+</p>
+
+<p>
+  <strong>Age: </strong>
+  <%= @booking.age %>
+</p>
+
+<p>
+  <strong>Party Venue: </strong>
+  <%= @booking.venue_address %>
+</p>
+<p>
+  <strong>Video: </strong>
+  <%= @booking.video %>
+</p>
+
+<p>
+  <strong>Picture: </strong>
+  <%= @booking.picture %>
+</p>
+
+<p>
+  <strong>Both: </strong>
+  <%= @booking.both %>
+</p>
+
+<p>
+  <strong>Live Schedule Date: </strong>
+  <%= @booking.live_schedule_date %>
+</p>
+
+<p>
+  <strong>On_demand Schedule Date: </strong>
+  <%= @booking.on_demand_schedule_date %>
+</p>
+
+<p>
+  <strong>Duration: </strong>
+  <%= @booking.duration %>
+</p>
+
+<%= render 'charges' %>or <br>
+<button class="success button"><%= link_to "Pay Cash"%></button> or <button class="success button"><%= link_to "Direct Acct Transfer"%></button><br>
+
+
+
+<p class="date">
+   Submitted <%= time_ago_in_words(@booking.created_at) %> Ago <br> 
+    <% if user_signed_in? %>
+      <%= link_to 'Edit', edit_booking_path(@booking) %> 
+      <%= link_to 'Back', bookings_path %>
+   <% end %>
+</p>

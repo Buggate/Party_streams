@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+
+    <title><%= content_for?(:party_streams) ? yield(:party_streams) : "Party Streams" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag    'application', 'http://fonts.googleapis.com/css?family=Raleway:400,700' %>  
+    <%= stylesheet_link_tag    'application', "http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+  <div class="top-bar">
+     <div class="fixed">
+       <div class="top-bar-title">
+             <h1><%= link_to "Party Streams", bookings_path %><a/></h1>      
+          </div>
+           <% if user_signed_in? %>
+          <br><div class="top-bar-right">
+           <section class="top-bar-section">
+             <div class="row align-stretch">  
+                   <ul class="menu">
+                     <button class="success button"><%= link_to "Home", root_path %></button> 
+                     <button class="alert button"><%= link_to "Price List" %></button>
+                     <button class="warning button"><%= link_to "Book a Service", new_booking_path %></button> 
+                     <button class=" secondary button"><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></button> 
+                     <button class="success button"><%= link_to "How it Works" %></button>
+                   
+                  </ul> 
+              </div>
+           </section>      
+           </div> 
+           <% else %>
+           <div class="top-bar-right">
+           <section class="top-bar-section">
+             <div class="row align-stretch">  
+                   <ul class="menu">
+                    <button class="button"><%= link_to 'Sign up', new_user_registration_path %></button>
+                    <button class="button"><%= link_to 'Sign in', new_user_session_path %></button>
+                  </ul> 
+              </div>
+           </section>      
+           </div> 
+           <% end %>
+          
+
+       </div>
+       </div><br>
+       <div classs="container">
+       <div class="row">
+
+           <div class="small-4 columns"><%= yield :head %></div>
+           <div class="large-8 columns"><%= yield %></div>
+           
+      </div><br>
+     </container>
+    
+      
+     <footer class="footer">
+        <div class="row full-width">
+        <div class="small-12 medium-12 columns">
+          <p class="copyright">&copy; party_stream.co.uk / Administrator</p>
+          <ul class="footer-links">
+                <li><%= link_to "Contact Us", "#" %></li>
+                <li><%= link_to "Terms of Use",   "#" %></li>
+                <li><%= link_to "Privacy Policy",   "#" %></li>
+                <li><%= link_to "How it Works?",   "#" %></li>
+          </ul>
+       </div>
+      </div>
+    </footer>
+
+
+
+      
+    
+
+  </body>
+
+
+
+
+</html>
+
+
+
+

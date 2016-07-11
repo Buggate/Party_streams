@@ -1,0 +1,23 @@
+
+
+
+<%= form_tag charges_path do %>
+  <article>
+    <% if flash[:error].present? %>
+      <div id="error_explanation">
+        <p><%= flash[:error] %></p>
+      </div>
+    <% end %>
+    <label class="amount">
+      <span>Amount: $150.00</span>
+    </label>
+  </article>
+
+  
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.application.secrets.stripe_publishable_key %>"
+          data-description="Stream your party live"
+          data-amount="15000"></script>
+
+<% end %>

@@ -1,0 +1,71 @@
+<%= form_for(@booking) do |f| %>
+  <% if @booking.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
+
+      <ul>
+      <% @booking.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table summary="Booking form fields">
+  <div>
+     <div class="field">
+       <%= f.label "Invitation Card" %><br>
+       <%= f.file_field :image %>
+     </div>
+     <div class="field">
+       <%= f.label(:Party) %><br>
+       <%= f.text_field :title %>
+     </div>
+     <div class="field">
+       <%= f.label "Party Hostname" %><br>
+       <%= f.text_field :hostname %>
+     </div>
+     <div class="field">
+       <%= f.label :age %><br>
+       <%= f.select(:age, ['18+', 'Adult Supervison'] ) %>
+     </div>
+     <div class="field">
+       <%= f.label "Party Venue" %><br>
+       <%= f.text_area :venue_address, :size => "30x10" %>
+     </div>
+     <div class="field">
+       <%= f.label "Describe Your Party" %><br>
+       <%= f.text_area :description, :size => "40x10"  %>
+     </div>
+     <div class="field">
+        <%= f.label :video %>
+        <%= f.check_box(:video, :false => 'nil') %> 
+        <%= f.label :picture %>
+        <%= f.check_box(:picture) %>
+        <%= f.label :both %>
+        <%= f.check_box(:both) %>
+    </div> 
+     <div class="field">
+       <%= f.label :live_schedule_date %><br>
+       <%= f.date_select( :live_schedule_date, :include_blank => true ) %>
+     </div>
+     <div class="field">
+       <%= f.label :on_demand_schedule_date %><br>
+       <%= f.date_select( :on_demand_schedule_date, :include_blank => true ) %>
+     </div>
+     <div class="field">
+       <%= f.label :duration %><br>
+       <%= f.select( :duration, ['15min', '30min', '45min', '60min', '1hr 30min', '2hrs'] ) %>
+    </div>
+  </div>
+
+
+</table>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>
+
+
+

@@ -1,0 +1,74 @@
+<p class="notice"><%= notice %></p>
+
+<div class="container">
+<% @bookings.each do |booking| %>
+  
+       <% content_for :head do %>
+             <h2>
+                 <%= image_tag booking.image.url(:medium) %>
+            </h2>
+           
+                <% if user_signed_in? %>
+                  <%= link_to 'Show', booking %>
+                  <%= link_to 'Edit', edit_booking_path(booking) %>
+                  <%= link_to 'Destroy', booking, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %> 
+
+           
+       <h3 class="comments_title">
+         <%= booking.comments.count %> Comments
+         </h3>
+
+         <div id="comments">
+          <%= render :partial => booking.comments %>
+          </div>
+
+          <%= simple_form_for [booking, Comment.new] do |f| %>
+          <div class="field">
+           <%= f.text_area :body, class: "form-control" %>
+           </div>
+           <br>
+           <%= f.submit "Add Comment", class: "btn btn-primary" %>
+
+
+           <% end %>  
+
+
+
+       <% end %>
+
+     
+
+       
+     <div>
+          <div class="label">Title</div><br>
+           <%= booking.title if booking.id %><br>
+           <div class="label">Party Host</div><br>
+           <%= booking.hostname %><br>
+           <div class="label">Venue</div><br>
+           <%= booking.venue_address %><br>
+           <div class="label">My Party</div><br>
+           <%= booking.description %><br>
+
+          <ul class="menu">
+          <button class="success button">
+             <i class="fi-results-demographics"></i>
+             <%= link_to 'Yes', dislike_booking_path(booking) %>
+               
+                           
+                       <%= booking.get_upvotes.size %>
+            </button>
+            <button class="alert button">
+             <i class="fi-results-demographics"></i>
+              <%= link_to 'No', dislike_booking_path(booking) %>
+                                       
+                       <%= booking.get_downvotes.size %>
+
+                 
+        </button>
+        </ul>
+        </div>
+                
+      <% end %>
+</div>
+
